@@ -78,11 +78,7 @@ public class Game extends Canvas implements Runnable {
         level.renderBackground(screen, xOffset, yOffset);
         level.renderSprites(screen, xOffset, yOffset);
 
-        for(int y = 0; y < HEIGHT; y++) {
-            for(int x = 0; x < WIDTH; x++) {
-                pixels[x + y * WIDTH] = screen.pixels[x + y * WIDTH];
-            }
-        }
+        System.arraycopy(screen.pixels, 0, pixels, 0, WIDTH * HEIGHT);
 
         Graphics g = bs.getDrawGraphics();
         g.fillRect(0, 0, getWidth(), getHeight()); // black background
