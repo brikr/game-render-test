@@ -80,6 +80,12 @@ public class Game extends Canvas implements Runnable {
 
         System.arraycopy(screen.pixels, 0, pixels, 0, WIDTH * HEIGHT);
 
+//        for(int y = 0; y < HEIGHT; y++) {
+//            for(int x = 0; x < WIDTH; x++) {
+//                pixels[x + y * WIDTH] = screen.pixels[x + y * WIDTH];
+//            }
+//        }
+
         Graphics g = bs.getDrawGraphics();
         g.fillRect(0, 0, getWidth(), getHeight()); // black background
 
@@ -96,7 +102,7 @@ public class Game extends Canvas implements Runnable {
 
     private void init() {
         screen = new Screen(WIDTH, HEIGHT);
-        level = new Level(30, 30);
+        level = new Level(100, 100);
     }
 
     public static void main(String[] args) {
