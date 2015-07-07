@@ -38,4 +38,12 @@ public class Level {
     public void generate() {
         Arrays.fill(tiles, new TestTile());
     }
+
+    public int getWidthInPixels() {
+        return width * T_SIZE;
+    }
+
+    public int getHeightInPixels() {
+        return height * T_SIZE;
+    }
 }

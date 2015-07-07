@@ -12,6 +12,7 @@ import java.awt.image.DataBufferInt;
 public class Game extends Canvas implements Runnable {
     private final static int WIDTH = 800;
     private final static int HEIGHT = 600;
+    private int xOffset, yOffset;
     private boolean running;
 
     private Level level;
@@ -72,8 +73,8 @@ public class Game extends Canvas implements Runnable {
             return;
         }
 
-        int xOffset = 0; // these can be dynamic later
-        int yOffset = 0;
+//        xOffset = 0; // these can be dynamic later
+//        yOffset = 0;
 
         level.renderBackground(screen, xOffset, yOffset);
         level.renderSprites(screen, xOffset, yOffset);
@@ -98,11 +99,15 @@ public class Game extends Canvas implements Runnable {
 
     private void tick() {
         // nothing to be done here yet
+        xOffset++;
+        yOffset++;
+        if(xOffset >= level.getWidthInPixels() - WIDTH) xOffset = 0; // wrap
+        if(yOffset >= level.getHeightInPixels() - HEIGHT) yOffset = 0;
     }
 
     private void init() {
         screen = new Screen(WIDTH, HEIGHT);
-        level = new Level(100, 100);
+        level = new Level(30, 30);
     }
 
     public static void main(String[] args) {
