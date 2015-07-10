@@ -1,5 +1,6 @@
 import level.Level;
 import screen.Screen;
+import ui.Font;
 
 import javax.swing.JFrame;
 import java.awt.Canvas;
@@ -16,6 +17,8 @@ public class Game extends Canvas implements Runnable {
     private boolean running;
 
     private Level level;
+
+    private Font font;
 
     private Screen screen;
     private BufferedImage image = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
@@ -73,11 +76,11 @@ public class Game extends Canvas implements Runnable {
             return;
         }
 
-//        xOffset = 0; // these can be dynamic later
-//        yOffset = 0;
-
         level.renderBackground(screen, xOffset, yOffset);
         level.renderSprites(screen, xOffset, yOffset);
+
+        font.renderText(screen, "screen x: " + xOffset, 5, 5);
+        font.renderText(screen, "screen y: " + yOffset, 5, 23);
 
         System.arraycopy(screen.pixels, 0, pixels, 0, WIDTH * HEIGHT);
 
@@ -108,6 +111,7 @@ public class Game extends Canvas implements Runnable {
     private void init() {
         screen = new Screen(WIDTH, HEIGHT);
         level = new Level(30, 30);
+        font = new Font("images/font-solid.png");
     }
 
     public static void main(String[] args) {

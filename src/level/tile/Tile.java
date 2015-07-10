@@ -23,7 +23,7 @@ public class Tile {
     public void render(Screen screen, int xo, int yo) {
         for(int y = 0; y < T_SIZE; y++) {
             for (int x = 0; x < T_SIZE; x++) {
-                if(x + xo < 0 | y + yo < 0) continue;
+                if(x + xo < 0 || y + yo < 0) continue;
                 if(x + xo >= screen.width || y + yo >= screen.height) continue;
                 screen.pixels[(x + xo) + (y + yo) * screen.width] = this.pixels[x + y * T_SIZE];
             }
